@@ -22,7 +22,8 @@
     "homepage": "https://github.com/cesarrew/ng2-currency-mask",
     "scripts": {
         "ng": "ng",
-        "build": "ng build"
+        "build": "ng build",
+        "postinstall": "cd node_modules/[PACKAGE_NAME] && npm install && npm run build"
     },
     "dependencies": {
         "@angular/animations": "~9.1.0",
