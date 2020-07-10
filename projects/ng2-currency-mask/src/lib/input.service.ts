@@ -21,8 +21,8 @@ export class InputService {
     }
 
     applyMask(isNumber: boolean, rawValue: string): string {
-        let { allowNegative, decimal, precision, prefix, suffix, thousands } = this.options;
-        rawValue = isNumber ? new Number(rawValue).toFixed(precision) : rawValue;
+        let { allowNegative, decimal, precision, prefix, suffix, thousands, inCents } = this.options;
+        rawValue = isNumber && !inCents ? new Number(rawValue).toFixed(precision) : rawValue;
         let onlyNumbers = rawValue.replace(/[^0-9]/g, "");
 
         if (!onlyNumbers) {
@@ -63,7 +63,13 @@ export class InputService {
             value = value.replace(this.options.decimal, ".");
         }
 
-        return parseFloat(value);
+        const valueFloat = parseFloat(value);
+
+        if (this.options.inCents) {
+            return Math.round(valueFloat * 100);
+        }
+
+        return valueFloat;
     }
 
     changeToNegative(): void {

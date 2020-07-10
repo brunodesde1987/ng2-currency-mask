@@ -32,7 +32,8 @@ export class CurrencyMaskDirective implements AfterViewInit, ControlValueAccesso
         precision: 2,
         prefix: "$ ",
         suffix: "",
-        thousands: ","
+        thousands: ",",
+        inCents: false,
     };
 
     constructor(@Optional() @Inject(CURRENCY_MASK_CONFIG) private currencyMaskConfig: CurrencyMaskConfig, private elementRef: ElementRef, private keyValueDiffers: KeyValueDiffers) {
