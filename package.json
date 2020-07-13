@@ -23,7 +23,6 @@
     "scripts": {
         "ng": "ng",
         "build": "ng build",
-        "postinstall": "cd node_modules/ng2-currency-mask && npm install && npm run build"
     },
     "dependencies": {
         "@angular/animations": "~9.1.0",
